@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "NfNNLDD+5GzJXPKnqu+lD47i5XnrOKQfszBPno4l80LkG/Q6HhbB0ARNVcIiUDX0Sn4m+yknmq08sLHQEOxwSg==",
+  "success": true,
+  "projectFilePath": "D:\\SampleApi\\EcommerceApiApp\\EcommerceApiApp.Core\\EcommerceApiApp.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\riyas.p\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512"
+  ],
+  "logs": []
+}
