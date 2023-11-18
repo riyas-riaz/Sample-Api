@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcommerceApiApp.Core.Domain.Enitities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace EcommerceApiApp.Core.DTO
 {
     public class OrderDetailsResponse
     {
-        public string? Email { get; set; }
+        public CustomerResponse customer { get; set; }
+        public OrderWithItemsResponse order { get; set; }
     }
 }

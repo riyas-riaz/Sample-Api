@@ -16,9 +16,9 @@ namespace EcommerceApiApp.Core.Services
         public CustomerService(ICustomerRepository repository) => _repository = repository;
         public async Task<bool> CheckValidCustomer(CustomerOrderRequest customerOrderRequest)
         {
-            Customer customer = await _repository.GetCustomerByEmnail(customerOrderRequest.User??"");
+            int count = await _repository.GetCustomerByEmnail(customerOrderRequest.User??"");
 
-            return customer != null;
+            return count>0;
         }
     }
 }

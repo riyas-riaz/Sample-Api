@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceApiApp.Core.Domain.Enitities
 {
-    public class OrderItems
+    public class OrderItem
     {
     }
 }

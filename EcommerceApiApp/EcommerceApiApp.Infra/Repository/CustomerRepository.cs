@@ -14,20 +14,34 @@ namespace EcommerceApiApp.Infra.Repository
             _dapperContext = dapperContext;
         }
 
-        public async Task<Customer> GetCustomerByEmnail(string email)
+
+        public async Task<int> CheckCustomerByEmnail(string email)
         {
-            Customer customer = null;
-            string procedureName = "_getProducts";
+            int count = 0;
+            string procedureName = "_checkCustomerByEmail";
 
             var parameters = new DynamicParameters();
-            parameters.Add("user", id, DbType.Int16);
-            parameters.Add("token", refreshToken.Token, DbType.String);
-            parameters.Add("expire", refreshToken.Expires, DbType.DateTime);
-            parameters.Add("created", refreshToken.Created, DbType.DateTime);
+            parameters.Add("userEmail", email, DbType.String);
 
             using (var connection = _dapperContext.CreateConnection())
             {
-                customer = await connection.QueryFirstOrDefaultAsync<Customer>(procedureName, commandType: CommandType.StoredProcedure);
+                count = Convert.ToInt32(await connection.ExecuteScalarAsync(procedureName, parameters, commandType: CommandType.StoredProcedure));
+            }
+
+            return count;
+        }
+
+        public async Task<Customer> GetCustomerByEmnail(string email)
+        {
+            Customer? customer = null;
+            string procedureName = "_getCustomerByEmail";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("userEmail", email, DbType.String);
+
+            using (var connection = _dapperContext.CreateConnection())
+            {
+                customer = await connection.QueryFirstAsync<Customer>(procedureName, parameters, commandType: CommandType.StoredProcedure);
             }
 
             return customer;

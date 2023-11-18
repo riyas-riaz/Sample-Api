@@ -23,20 +23,28 @@ namespace EcommerceApiApp.Controllers
         [Route("get_order_details")]
         public async Task<IActionResult> GetOrderDetails(CustomerOrderRequest customerOrderRequest)
         {
-            CustomerOrderRequestValidator validationRules = new CustomerOrderRequestValidator();
-            ValidationResult validationResult = validationRules.Validate(customerOrderRequest);
-            if (!validationResult.IsValid)
+            try
             {
-                return BadRequest(validationResult.Errors[0].ErrorMessage);
-            }
+                CustomerOrderRequestValidator validationRules = new CustomerOrderRequestValidator();
+                ValidationResult validationResult = validationRules.Validate(customerOrderRequest);
+                if (!validationResult.IsValid)
+                {
+                    return BadRequest(validationResult.Errors[0].ErrorMessage);
+                }
 
-            bool isValidUser = await _customerService.CheckValidCustomer(customerOrderRequest);
-            if(!isValidUser)
+                bool isValidUser = await _customerService.CheckValidCustomer(customerOrderRequest);
+                if (!isValidUser)
+                {
+                    return BadRequest("Invalid User.");
+                }
+
+                return Ok(await _orderHistoryService.GetCutomerOrderHistory(customerOrderRequest));
+            }
+            catch (Exception ex)
             {
-                return BadRequest("Invalid User.");
+                //write the exception details using log
+                return StatusCode(500, "Internal Server Error");
             }
-
-            return Ok(await _orderHistoryService.GetCutomerOrderHistory(customerOrderRequest));
         }
     }
 }

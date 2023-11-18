@@ -9,6 +9,7 @@ namespace EcommerceApiApp.Core.Domain.RepoContracts
 {
     public interface ICustomerRepository
     {
+        Task<int> CheckCustomerByEmnail(string email);
         Task<Customer> GetCustomerByEmnail(string email);
     }
 }
