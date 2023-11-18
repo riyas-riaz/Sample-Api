@@ -1,0 +1,12 @@
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.csproj.AssemblyReference.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.AssemblyInfoInputs.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.AssemblyInfo.cs
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.csproj.CoreCompileInputs.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\bin\Debug\net6.0\EcommerceApiApp.Core.deps.json
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\bin\Debug\net6.0\EcommerceApiApp.Core.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\bin\Debug\net6.0\EcommerceApiApp.Core.pdb
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\refint\EcommerceApiApp.Core.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\EcommerceApiApp.Core.pdb
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Core\obj\Debug\net6.0\ref\EcommerceApiApp.Core.dll

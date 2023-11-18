@@ -1,0 +1,15 @@
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.csproj.AssemblyReference.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.GeneratedMSBuildEditorConfig.editorconfig
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.AssemblyInfoInputs.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.AssemblyInfo.cs
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.csproj.CoreCompileInputs.cache
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\bin\Debug\net6.0\EcommerceApiApp.Infra.deps.json
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\bin\Debug\net6.0\EcommerceApiApp.Infra.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\bin\Debug\net6.0\EcommerceApiApp.Infra.pdb
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\bin\Debug\net6.0\EcommerceApiApp.Core.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\bin\Debug\net6.0\EcommerceApiApp.Core.pdb
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.csproj.CopyComplete
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\refint\EcommerceApiApp.Infra.dll
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\EcommerceApiApp.Infra.pdb
+D:\SampleApi\EcommerceApiApp\EcommerceApiApp.Infra\obj\Debug\net6.0\ref\EcommerceApiApp.Infra.dll
