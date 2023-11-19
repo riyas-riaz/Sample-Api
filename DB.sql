@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [EcommerceAppDB]    Script Date: 2023/11/18 23:54:25 ******/
+/****** Object:  Database [EcommerceAppDB]    Script Date: 2023/11/19 10:47:49 ******/
 CREATE DATABASE [EcommerceAppDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [EcommerceAppDB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CL
 GO
 USE [EcommerceAppDB]
 GO
-/****** Object:  Table [dbo].[CUSTOMERS]    Script Date: 2023/11/18 23:54:25 ******/
+/****** Object:  Table [dbo].[CUSTOMERS]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +104,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ORDERITEMS]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  Table [dbo].[ORDERITEMS]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +121,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ORDERS]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  Table [dbo].[ORDERS]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -138,7 +138,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PRODUCTS]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  Table [dbo].[PRODUCTS]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -160,7 +160,7 @@ GO
 ALTER TABLE [dbo].[ORDERITEMS]  WITH CHECK ADD FOREIGN KEY([PRODUCTID])
 REFERENCES [dbo].[PRODUCTS] ([PRODUCTID])
 GO
-/****** Object:  StoredProcedure [dbo].[_checkCustomerByEmail]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  StoredProcedure [dbo].[_checkCustomerByEmail]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,22 +173,7 @@ SELECT COUNT(CUSTOMERID) FROM CUSTOMERS where EMAIL = @userEmail
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[_getAllOrderForUser]    Script Date: 2023/11/18 23:54:26 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-create proc [dbo].[_getAllOrderForUser] @userEmail nvarchar(50)
-AS
-BEGIN
-
-SELECT O.ORDERID as orderNumber, O.orderDate as orderDate, C.FIRSTNAME+' '+C.LASTNAME+', '+C.TOWN+', '+C.STREET+', '+C.POSTCODE+', '+C.HOUSENO as deliveryAddress, 
-O.DELIVERYEXPECTED as deliveryExpected from CUSTOMERS C
-inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID where C.EMAIL = @userEmail  order by O.ORDERID desc
-
-END
-GO
-/****** Object:  StoredProcedure [dbo].[_getCustomerByEmail]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  StoredProcedure [dbo].[_getCustomerByEmail]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -201,7 +186,22 @@ SELECT FirstName, LastName FROM CUSTOMERS where EMAIL = @userEmail
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[_getOrderItems]    Script Date: 2023/11/18 23:54:26 ******/
+/****** Object:  StoredProcedure [dbo].[_getMostRecentOrdeForUser]    Script Date: 2023/11/19 10:47:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[_getMostRecentOrdeForUser] @userEmail nvarchar(50)
+AS
+BEGIN
+
+SELECT TOP 1 O.ORDERID as orderNumber, O.orderDate as orderDate, C.FIRSTNAME+' '+C.LASTNAME+', '+C.TOWN+', '+C.STREET+', '+C.POSTCODE+', '+C.HOUSENO as deliveryAddress, 
+O.DELIVERYEXPECTED as deliveryExpected from CUSTOMERS C
+inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID where C.EMAIL = @userEmail order by O.ORDERID desc
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[_getOrderItems]    Script Date: 2023/11/19 10:47:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +210,7 @@ CREATE proc [dbo].[_getOrderItems] @userEmail nvarchar(50)
 AS
 BEGIN
 
-SELECT case when(O.CONTAINSGIFT = 'contains a gift') then 'Gift' else  P.PRODUCTNAME end as product, OT.QUANTITY as quantity, OT.PRICE as priceEach from CUSTOMERS C
+SELECT case when(O.CONTAINSGIFT = 0) then 'Gift' else  P.PRODUCTNAME end as product, OT.QUANTITY as quantity, OT.PRICE as priceEach from CUSTOMERS C
 inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID inner join ORDERITEMS OT on O.ORDERID = OT.ORDERID 
 inner join PRODUCTS P on P.PRODUCTID = OT.PRODUCTID where C.EMAIL = @userEmail
 
