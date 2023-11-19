@@ -11,7 +11,7 @@ namespace EcommerceApiApp.Core.DTO
         public string orderNumber { get; set; } = string.Empty;
         public string orderDate { get; set; } = string.Empty;
         public string deliveryAddress { get; set; } = string.Empty;
-        public List<OrderResponse>? orderItems { get; set; }
+        public IEnumerable<OrderItemsResponse>? orderItems { get; set; }
         public string deliveryExpected { get; set; } = string.Empty;
     }
 }

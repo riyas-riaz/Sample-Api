@@ -35,17 +35,17 @@ namespace EcommerceApiApp.Infra.Repository
             return orderItemsResponses;
         }
 
-        public async Task<IEnumerable<OrderResponse>> GetAllOrdersForUser(string userEmail)
+        public async Task<OrderResponse> GetMostRecentOrderForUser(string userEmail)
         {
-            IEnumerable<OrderResponse> orderResponses = null;
-            string procedureName = "_getAllOrderForUser";
+            OrderResponse? orderResponses = null;
+            string procedureName = "_getMostRecentOrdeForUser";
 
             var parameters = new DynamicParameters();
             parameters.Add("userEmail", userEmail, DbType.String);
 
             using (var connection = _dapperContext.CreateConnection())
             {
-                orderResponses = await connection.QueryAsync<OrderResponse>(procedureName, parameters, commandType: CommandType.StoredProcedure);
+                orderResponses = await connection.QueryFirstOrDefaultAsync<OrderResponse>(procedureName, parameters, commandType: CommandType.StoredProcedure);
             }
 
             return orderResponses;

@@ -184,7 +184,7 @@ BEGIN
 
 SELECT O.ORDERID as orderNumber, O.orderDate as orderDate, C.FIRSTNAME+' '+C.LASTNAME+', '+C.TOWN+', '+C.STREET+', '+C.POSTCODE+', '+C.HOUSENO as deliveryAddress, 
 O.DELIVERYEXPECTED as deliveryExpected from CUSTOMERS C
-inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID where C.EMAIL = @userEmail
+inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID where C.EMAIL = @userEmail  order by O.ORDERID desc
 
 END
 GO

@@ -3,6 +3,7 @@ using EcommerceApiApp.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
 builder.AddServices();
 
 var app = builder.Build();

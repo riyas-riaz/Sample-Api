@@ -10,6 +10,6 @@ namespace EcommerceApiApp.Core.Domain.RepoContracts
     public interface IOrderRepository
     {
         Task<IEnumerable<OrderItemsResponse>> GetAllOrderedItemsForUser(string userEmail);
-        Task<IEnumerable<OrderResponse>> GetAllOrdersForUser(string userEmail);
+        Task<OrderResponse> GetMostRecentOrderForUser(string userEmail);
     }
 }
