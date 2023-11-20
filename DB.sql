@@ -210,7 +210,7 @@ CREATE proc [dbo].[_getOrderItems] @userEmail nvarchar(50)
 AS
 BEGIN
 
-SELECT case when(O.CONTAINSGIFT = 0) then 'Gift' else  P.PRODUCTNAME end as product, OT.QUANTITY as quantity, OT.PRICE as priceEach from CUSTOMERS C
+SELECT case when(O.CONTAINSGIFT = 1) then 'Gift' else  P.PRODUCTNAME end as product, OT.QUANTITY as quantity, OT.PRICE as priceEach from CUSTOMERS C
 inner join ORDERS O on C.CUSTOMERID = O.CUSTOMERID inner join ORDERITEMS OT on O.ORDERID = OT.ORDERID 
 inner join PRODUCTS P on P.PRODUCTID = OT.PRODUCTID where C.EMAIL = @userEmail
 
